@@ -1,0 +1,25 @@
+$TTL 1W
+@       IN      SOA     tolmang.com.    root (
+                        2019070700      ; serial
+                        3H              ; refresh (3 hours)
+                        30M             ; retry (30 minutes)
+                        2W              ; expiry (2 weeks)
+                        1W )            ; minimum (1 week)
+        IN      NS      tolmang.com.
+;
+; The syntax is "last octet" and the host must have an FQDN
+; with a trailing dot.
+
+30      IN      PTR     tolmang.com.
+;
+31      IN      PTR     bootstrap.ocp48.tolmang.com.
+;
+30      IN      PTR     api.ocp48.tolmang.com.
+30      IN      PTR     api-int.ocp48.tolmang.com.
+;
+32      IN      PTR     master0.ocp48.tolmang.com.
+33      IN      PTR     master1.ocp48.tolmang.com.
+34      IN      PTR     master2.ocp48.tolmang.com.
+35      IN      PTR     worker0.ocp48.tolmang.com.
+36      IN      PTR     worker1.ocp48.tolmang.com.
+

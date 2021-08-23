@@ -1,0 +1,46 @@
+$TTL 1W
+@       IN      SOA     @ tolmang.com.  (
+                        2019070700      ; serial
+                        3H              ; refresh (3 hours)
+                        30M             ; retry (30 minutes)
+                        2W              ; expiry (2 weeks)
+                        1W )            ; minimum (1 week)
+        IN      NS      tolmang.com.
+        IN      A       192.168.100.30
+
+ns      IN      A       192.168.100.30
+
+;cluster name
+ocp48    IN      CNAME   @
+
+; The api identifies the IP of your load balancer.
+api.ocp48.tolmang.com.           IN      A       192.168.100.30
+api-int.ocp48.tolmang.com.       IN      A       192.168.100.30
+
+; The wildcard also identifies the load balancer.
+*.apps.ocp48.tolmang.com.        IN      A       192.168.100.30
+
+; Create an entry for the bootstrap host.
+bootstrap.ocp48.tolmang.com.     IN      A       192.168.100.31
+
+; Create entries for the master hosts.
+master0.ocp48.tolmang.com.               IN      A       192.168.100.32
+master1.ocp48.tolmang.com.               IN      A       192.168.100.33
+master2.ocp48.tolmang.com.               IN      A       192.168.100.34
+
+; Create entries for the worker hosts.
+worker0.ocp48.tolmang.com.               IN      A       192.168.100.35
+worker1.ocp48.tolmang.com.               IN      A       192.168.100.36
+
+; ocp internal cluster ip
+etcd-0.ocp48.tolmang.com.                IN      A       192.168.100.32
+etcd-1.ocp48.tolmang.com.                IN      A       192.168.100.33
+etcd-2.ocp48.tolmang.com.                IN      A       192.168.100.34
+
+; ocp srv recores
+_etcd-server-ssl._tcp.ocp48.tolmang.com. 86400   IN      SRV     0       10      2380    etcd-0.ocp48.tolmang.com.
+_etcd-server-ssl._tcp.ocp48.tolmang.com. 86400   IN      SRV     0       10      2380    etcd-1.ocp48.tolmang.com.
+_etcd-server-ssl._tcp.ocp48.tolmang.com. 86400   IN      SRV     0       10      2380    etcd-2.ocp48.tolmang.com.
+
+;EOF
+
